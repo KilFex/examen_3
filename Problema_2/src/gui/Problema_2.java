@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import examen.ArregloSueldos;
+import examen.ArregloPesos;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -26,13 +26,13 @@ public class Problema_2 extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
-	private JTextField txtSueldo;
-	private JLabel lblSueldo;
+	private JTextField txtPeso;
+	private JLabel lblPeso;
 	private JButton btnAdicionar;
-	private JButton btnReemplazarSueldo;
-	private JButton btnIncrementarSueldo;
+	private JButton btnReemplazarPeso;
+	private JButton btnIncrementarPeso;
 
-	ArregloSueldos a = new ArregloSueldos();
+	ArregloPesos a = new ArregloPesos();
 
 	/**
 	 * Launch the application.
@@ -77,54 +77,71 @@ public class Problema_2 extends JFrame implements ActionListener {
 		txtS.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		scrollPane.setViewportView(txtS);
 
-		txtSueldo = new JTextField();
-		txtSueldo.setBounds(66, 8, 169, 20);
-		contentPane.add(txtSueldo);
-		txtSueldo.setColumns(10);
+		txtPeso = new JTextField();
+		txtPeso.setBounds(66, 8, 169, 20);
+		contentPane.add(txtPeso);
+		txtPeso.setColumns(10);
 
-		lblSueldo = new JLabel("Sueldo");
-		lblSueldo.setBounds(10, 11, 46, 14);
-		contentPane.add(lblSueldo);
+		lblPeso = new JLabel("Sueldo");
+		lblPeso.setBounds(10, 11, 46, 14);
+		contentPane.add(lblPeso);
 
 		btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(this);
 		btnAdicionar.setBounds(247, 7, 213, 23);
 		contentPane.add(btnAdicionar);
 		
-		btnReemplazarSueldo = new JButton("Reemplazar sueldo");
-		btnReemplazarSueldo.addActionListener(this);
-		btnReemplazarSueldo.setBounds(245, 41, 215, 23);
-		contentPane.add(btnReemplazarSueldo);
+		btnReemplazarPeso = new JButton("Reemplazar Peso");
+		btnReemplazarPeso.addActionListener(this);
+		btnReemplazarPeso.setBounds(245, 41, 215, 23);
+		contentPane.add(btnReemplazarPeso);
 		
-		btnIncrementarSueldo = new JButton("Incrementar sueldo");
-		btnIncrementarSueldo.addActionListener(this);
-		btnIncrementarSueldo.setBounds(245, 75, 215, 23);
-		contentPane.add(btnIncrementarSueldo);
+		btnIncrementarPeso = new JButton("Incrementar Peso");
+		btnIncrementarPeso.addActionListener(this);
+		btnIncrementarPeso.setBounds(245, 75, 215, 23);
+		contentPane.add(btnIncrementarPeso);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnIncrementarSueldo) {
-			actionPerformedBtnIncrementarSueldo(arg0);
+		if (arg0.getSource() == btnIncrementarPeso) {
+			
+			
+			
+			actionPerformedBtnIncrementarPeso(arg0);
 		}
-		if (arg0.getSource() == btnReemplazarSueldo) {
-			actionPerformedBtnReemplazarSueldo(arg0);
+		if (arg0.getSource() == btnReemplazarPeso) {
+			actionPerformedBtnReemplazarPeso(arg0);
 		}
 		if (arg0.getSource() == btnAdicionar) {
+			
 			actionPerformedBtnAdicionar(arg0);
 		}
 	}
 
 	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-			a.adicionar(leerSueldo());
+		String Peso = txtPeso.getText();
+		if(!Peso.isEmpty()){
+	
+		a.adicionar(leerPeso());
 			limpiar();
 			listar();
-	}
+		}
+		else {
+			mensaje("No se a ingresado ningun dato");
+		}
+}
 
-	protected void actionPerformedBtnReemplazarSueldo(ActionEvent arg0) {
+	protected void actionPerformedBtnReemplazarPeso(ActionEvent arg0) {
+		
+		a.reemplazarPesoMayor70();
+		listar();
 		
 	}
 	
-	protected void actionPerformedBtnIncrementarSueldo(ActionEvent arg0) {
+	protected void actionPerformedBtnIncrementarPeso(ActionEvent arg0) {
+		
+		a.incrementarPesoMayor70();
+		listar();
 		
 	}
 	
@@ -143,12 +160,12 @@ public class Problema_2 extends JFrame implements ActionListener {
 		txtS.append(s + "\n");
 	}
 
-	double leerSueldo() {
-		return Double.parseDouble(txtSueldo.getText());
+	double leerPeso() {
+		return Double.parseDouble(txtPeso.getText());
 	}
 	
 	void limpiar() {
-		txtSueldo.setText("");
-		txtSueldo.requestFocus();
+		txtPeso.setText("");
+		txtPeso.requestFocus();
 	}
 }
