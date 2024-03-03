@@ -147,7 +147,7 @@ public class gui extends JFrame implements ActionListener {
 		arregloSueldo.eliminarTodo();
 		listar();
 	}else {
-		mensaje("No existe kuno");
+		mensaje("No existen datos");
 	}
 	}
 	
@@ -157,7 +157,7 @@ public class gui extends JFrame implements ActionListener {
 		listar();
 	}
 	else {
-		mensaje("Eres fan de kuno");
+		mensaje("No existen datos");
 	}
 }
 }

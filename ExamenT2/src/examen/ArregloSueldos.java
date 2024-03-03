@@ -1,6 +1,6 @@
 package examen;
 
-import javax.swing.JOptionPane;
+
 
 public class ArregloSueldos {
 	private double sueldo[];
